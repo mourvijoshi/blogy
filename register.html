@@ -1,0 +1,111 @@
+<html>
+<head>
+    <title>REGISTER PAGE</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/register.css">
+    <style>
+        body {
+            background: url(./assets/images/img1.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateFullName() {
+            var fullName = document.getElementById("fullname").value;
+            var fullNameError = document.getElementById("fullNameError");
+
+            if (fullName.trim().split(" ").length < 2 || fullName.length < 6) {
+                fullNameError.innerHTML = "Full Name must be at least 2 words and 6 characters long";
+            } else {
+                fullNameError.innerHTML = "";
+            }
+        }
+
+        function validateUsername() {
+            var username = document.getElementById("username").value;
+            var usernameError = document.getElementById("usernameError");
+
+            if (username.length < 6) {
+                usernameError.innerHTML = "Username must be at least 6 characters long";
+            } else {
+                usernameError.innerHTML = "";
+            }
+        }
+
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var emailError = document.getElementById("emailError");
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+            if (!emailRegex.test(email)) {
+                emailError.innerHTML = "Invalid email format";
+            } else {
+                emailError.innerHTML = "";
+            }
+        }
+
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var passwordError = document.getElementById("passwordError");
+            var passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+            if (!passwordRegex.test(password)) {
+                passwordError.innerHTML = "Password must be at least 8 characters long and contain at least one number and one special character";
+            } else {
+                passwordError.innerHTML = "";
+            }
+        }
+
+        function validateForm() {
+            var fullName = document.getElementById("fullname").value;
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (fullName.trim().split(" ").length < 2 || fullName.length < 6 ||
+                username.length < 6 || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/) ||
+                !password.match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/)) {
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="loginbox">
+        <img src="./assets/images/s1.jpg" class="avatar">
+        <h1>REGISTER HERE</h1>
+        <form name="registerForm" method="post" action="register.php" onsubmit="return validateForm();">
+            Full Name:
+            <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name" onkeyup="validateFullName()">
+            <span id="fullNameError" class="error"></span>
+            <br>
+            <br>
+            Username:
+            <input type="text" id="username" name="username" placeholder="Enter UserName" onkeyup="validateUsername()">
+            <span id="usernameError" class="error"></span>
+            <br>
+            <br>
+            Email:
+            <input type="text" id="email" name="email" placeholder="Enter Email Address" onkeyup="validateEmail()">
+            <span id="emailError" class="error"></span>
+            <br>
+            <br>
+            Password:
+            <input type="password" id="password" name="password" placeholder="Enter Password" onkeyup="validatePassword()">
+            <span id="passwordError" class="error"></span>
+            <br>
+            <br>
+            <input type="Submit" name="" value="Register"> <br>
+            <a href="login.html">LOGIN |</a>
+            <a href="first.html">BACK TO HOME</a>
+            <br>
+        </form>
+    </div>
+</body>
+</html>

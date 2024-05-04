@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/login.css">
+    <style>
+        body {
+            background: url(./assets/images/img1.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateUsername() {
+            var username = document.getElementById("username").value;
+            var usernameError = document.getElementById("usernameError");
+
+            if (username.length < 6) {
+                usernameError.innerHTML = "Username must be at least 6 characters long";
+            } else {
+                usernameError.innerHTML = "";
+            }
+        }
+
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var passwordError = document.getElementById("passwordError");
+
+            if (password.length < 8) {
+                passwordError.innerHTML = "Password must be at least 8 characters long";
+            } else {
+                passwordError.innerHTML = "";
+            }
+        
+
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username.length < 6 || password.length < 8) {
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="loginbox">
+        <img src="./assets/images/s1.jpg" class="avatar">
+        <h1>LOGIN HERE</h1>
+        <form name="loginForm" method="post" action="login.php" onsubmit="return validateForm();">
+            Username:
+            <input type="text" id="username" name="username" placeholder="Enter username" onkeyup="validateUsername()">
+            <span id="usernameError" class="error"></span>
+            <br>
+			<br>
+            Password:
+            <input type="password" id="password" name="password" placeholder="Enter password" onkeyup="validatePassword()">
+            <span id="passwordError" class="error"></span>
+            <br>
+			<br>
+            <input type="Submit" name="" value="login">
+			<br>
+            <a href="reset.html">FORGET PASSWORD |</a>
+            <a href="register.html">SIGN UP</a>
+            <br>
+        </form>
+    </div>
+</body>
+</html>
