@@ -114,4 +114,4 @@ Wanna make Blogy even better? Fork it, clone it, do your magic, and open a PR. W
 
 This project is licensed under the **MIT License**. (Because sharing is caring!)
 
-aths in the README accordingly. Let me know if you'd like further customization!
+
